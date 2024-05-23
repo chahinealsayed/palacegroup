@@ -1,0 +1,31 @@
+{% contents type='recruitment'  sort='position'%}
+<section class="recruitment pt-4 container">
+	<div class="row">
+		<div class="col-md-6">
+			<div>
+				<h4 class="subtitle">CURRENT OPPORTUNITIES</h4>
+			</div>
+			<div class="card-info pt-4">
+				<ol>
+					{% for content in contents %}
+						<div class="recruitment-info">
+							<li>{{content.local.title}}</li>
+							<p class="excerpt">
+								{{content.local.excerpt | nl2br | span("QA/QC Engineer",env('CSS_COLOR_PRIMARY'))
+								| span("Planning Engineer",env('CSS_COLOR_PRIMARY'))
+								| span("Project Manager",env('CSS_COLOR_PRIMARY'))}}
+							</p>
+						</div>
+						<p class="fw-bold">Job Description</p>
+						<a href="/default/content?type=recruitment&id={{content.id}}" class=" submit">CLICK HERE</a>
+					{% endfor %}
+				</ol>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<p class="subtitle">FILL THE BELOW FORM*</p>
+			{{'website/RecruitmentForm' | vue}}
+		</div>
+	</div>
+</section>
+{% endcontents %}

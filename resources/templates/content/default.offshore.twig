@@ -1,0 +1,21 @@
+{% content "cms.contents.default.offshore" %}
+<div class="content-about container">
+	<section class="about pt-4">
+		<div class="">
+			<div class="row">
+				<div class="col-md-6">
+					<p class="subtitle">
+						{{ content.local.title| nl2br}}
+					</p>
+					<p class="title">
+						{{ content.local.description| nl2br | span("Palace Group LLC.",env('CSS_COLOR_PRIMARY'))}}
+					</p>
+				</div>
+				<div class="col-md-6">
+					<img src="{{ content.attrs.image.url }}" alt=""/>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+{% endcontent %}

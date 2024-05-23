@@ -1,0 +1,61 @@
+{% contents type='services' %}
+<div class="content-about container">
+	<section class="about services pt-4">
+		{% for content in contents %}
+			{% if isMobile() or isTablet() %}
+				<div class="row">
+					<div class="col-md-6">
+						<p class="subtitle">
+							{{ content.local.title| nl2br}}
+						</p>
+						<p class="excerpt">
+							{{ content.local.excerpt| nl2br}}
+						</p>
+						<p class="title">
+							{{ content.local.description| nl2br | span("Palace Group LLC.",env('CSS_COLOR_PRIMARY'))}}
+						</p>
+					</div>
+					<div class="col-md-6">
+						<div class="img">
+							<img class="service-img" src="{{ content.attrs.image.url }}" alt=""/>
+						</div>
+						<p class="title">
+							{{ content.local.description1| nl2br | span("Palace Group LLC.",env('CSS_COLOR_PRIMARY'))}}
+						</p>
+						<p class="title space spacing">
+							{{ content.local.description2| nl2br | span("Palace Group LLC.",env('CSS_COLOR_PRIMARY'))}}
+						</p>
+					</div>
+				</div>
+			{% else %}
+				<div class="row">
+					<div class="col-md-6">
+						<p class="subtitle">
+							{{ content.local.title| nl2br}}
+						</p>
+						<p class="excerpt">
+							{{ content.local.excerpt| nl2br}}
+						</p>
+						<p class="title">
+							{{ content.local.description| nl2br | span("Palace Group LLC.",env('CSS_COLOR_PRIMARY'))}}
+						</p>
+						<p class="title">
+							{{ content.local.description1| nl2br | span("Palace Group LLC.",env('CSS_COLOR_PRIMARY'))}}
+						</p>
+					</div>
+					<div class="col-md-6">
+						<div class="img">
+							<img class="service-img" src="{{ content.attrs.image.url }}" alt=""/>
+						</div>
+						<p class="title space spacing">
+							{{ content.local.description2| nl2br | span("Palace Group LLC.",env('CSS_COLOR_PRIMARY'))}}
+						</p>
+					</div>
+				</div>
+			{% endif %}
+
+
+		{% endfor %}
+	</section>
+</div>
+{% endcontents %}

@@ -1,0 +1,103 @@
+{{ 'About'| title }}
+{{ 'route-about' | bodyClass }}
+{{ seo('about-' ~ language(), '', '', []) }}
+
+
+<div class="content-about container">
+	<section class="about">
+		{% content "cms.contents.default.about" %}
+		<div class="">
+			<div class="row pt-4">
+				<div class="col-md-6">
+					<p class="subtitle">
+						{{ content.local.title| nl2br }}
+					</p>
+					<h2 class="excerpt">
+						{{ content.local.excerpt| nl2br}}
+					</h2>
+					<p class="title">
+						{{ content.local.description| nl2br | span("Palace Group LLC.",env('CSS_COLOR_PRIMARY'))}}
+					</p>
+					{% content "cms.contents.default.about.1" %}
+					<div class="pt-4">
+						<p class="subtitle">
+							{{ content.local.title| nl2br}}
+						</p>
+						<p class="GroupTitle">
+							{{ content.local.excerpt| nl2br}}
+						</p>
+						<p class="">
+							<web-view blocks="{{ content.local.blocks | json }}"></web-view>
+						</p>
+					</div>
+					{% endcontent %}
+				</div>
+				{% content "cms.contents.default.about" %}
+				<div class="col-md-6">
+					<div class="img">
+						<img alt="" src="{{ content.attrs.image.url }}"/>
+					</div>
+				</div>
+				{% endcontent %}
+			</div>
+		</div>
+		{% endcontent %}
+	</section>
+
+	<div class="scroll-down-indicator">
+		<a href="#section11">
+			<span class="arrow"></span>
+		</a>
+	</div>
+
+	<section class="vision-mision about">
+		<div class="">
+			<div class="row">
+				<div class="col-md-6">
+					{% content "cms.contents.default.about.2" %}
+					<p class="subtitle">
+						{{ content.local.title| nl2br}}
+					</p>
+					<p class="title">
+						{{ content.local.description| nl2br | span("Palace Group LLC.",env('CSS_COLOR_PRIMARY'))}}
+					</p>
+					{% endcontent %}
+				</div>
+
+				<div class="col-md-6">
+					{% content "cms.contents.default.about.3" %}
+					<p class="subtitle">
+						{{ content.local.title| nl2br}}
+					</p>
+					<p class="title">
+						{{ content.local.description| nl2br | span("Palace Group LLC.",env('CSS_COLOR_PRIMARY'))}}
+					</p>
+					{% endcontent %}
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="project1 about">
+		{% content "cms.contents.default.about.4" %}
+		<div class="">
+			<div class="row">
+				<div class="col-md-6">
+
+					<p class="subtitle">
+						{{ content.local.title| nl2br}}
+					</p>
+					<p class="title">
+						{{ content.local.description| nl2br | span("Palace Group LLC.",env('CSS_COLOR_PRIMARY'))}}
+
+					</p>
+				</div>
+				<div class="col-md-6">
+					<img alt="" src="{{ content.attrs.image.url }}"/>
+				</div>
+			</div>
+		</div>
+		{% endcontent %}
+	</section>
+</div>

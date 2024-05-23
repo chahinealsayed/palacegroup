@@ -1,0 +1,38 @@
+{% contents type='divisions' %}
+<script src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
+
+<div class="content-about container">
+	{% for content in contents %}
+		<section class="about division {% if loop.last %} noheight{% endif %}
+		 {% if loop.first %} nocenter{% endif %}
+		 pt-4" id="{{loop.index}}">
+			<div class="row{% if loop.last %} no-padding{% endif %}">
+				<div class="col-md-6">
+					<p class="subtitle">
+						{{ content.local.title| nl2br}}
+					</p>
+					<p class="excerpt">
+						{{ content.local.excerpt| nl2br}}
+					</p>
+					<p class="title">
+						{{ content.local.description| nl2br | span("Palace Group LLC",env('CSS_COLOR_PRIMARY'))
+                        | span("SERVICES",env('CSS_COLOR_PRIMARY'))
+                    }}
+					</p>
+					<p class="">
+						<web-view blocks="{{ content.local.blocks | json }}"></web-view>
+					</p>
+				</div>
+				<div class="col-md-6">
+					<div class='img'>
+						<img src='{{ content.attrs.image.url}}' alt="">
+					</div>
+				</div>
+				<div class="vc_btn3-container  nextSec vc_btn3-inline">
+					<a class="vc_general vc_btn3 vc_btn3-size-md vc_btn3-shape-rounded vc_btn3-style-modern vc_btn3-color-grey _mPS2id-h scroll-to {% if loop.last %} reverse{% endif %}" href="{% if loop.last %} Divisions#{{1}}{% else %}Divisions#{{loop.index + 1}}{% endif %}" title="">Text on the button</a>
+				</div>
+			</div>
+		</section>
+	{% endfor %}
+</div>
+{% endcontents %}

@@ -1,0 +1,84 @@
+{% extends '@resources/tiers/_base.twig' %}
+{% block html %}
+	{{ use('app/widgets/PageLoader') }}
+	{% set pageLoader = page_loader_widget({once:true}) %}
+	{{ parent() }}
+{% endblock %}
+{% block body %}
+	{{ 'main-layout' | layoutClass }}
+	{{ parent() }}
+{% endblock %}
+{% block content %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	{% set externals = [
+    {
+        'label': 'Facebook',
+		'url': 'social.facebook' | setting('#'),
+    },
+	{
+        'label': 'Instagram',
+		'url': 'social.instagram' | setting('#'),
+    },
+	{
+        'label': 'Linkedin',
+		'url': 'social.linkedin' | setting('#'),
+    },
+] %}
+
+	{% if isMobile() or isTablet() %}
+		<div class="mobile-header container">
+			<div class="d-flex justify-content-between pb-2">
+				<a href="/"><img src="public\images\logo.svg" height="70px" width="86px" alt=""></a>
+				{# {{ "" | link('/default/index', {}, {class: 'logo'}) }} #}
+				{{'website/sidemenu' | vue({list : sideMenu(), externals:externals })}}
+			</div>
+		</div>
+	{% else %}
+		<header class="header-wrapper container">
+			<div class="d-flex">
+				<div>
+					{{ "" | link('/default/index', {}, {class: 'logo'}) }}
+				</div>
+				<div class="menu-wrapper">
+					<div class="menu">
+						{{ "Home" | link('/default/index') }}
+						{{ "About&nbspUs" | link('/default/content',{id:'cms.contents.default.about'}) }}
+						{{ "Services" | link('/default/contents',{type:'services'}) }}
+						{{ "Divisions" | link('/default/contents',{type:'divisions'}) }}
+						{{ "Projects" | link('/default/contents',{type:'projects'}) }}
+						{{ "Recruitment" | link('/default/contents',{type:'recruitment'}) }}
+						{{ "Contact&nbspus" | link('/default/contents',{type:'contact'}) }}
+					</div>
+					<div class="social">
+						<a target="_blank" href="{{'social.facebook' | setting('#')}}">
+							<i class="fa-brands fa-facebook-f"></i>
+						</a>
+						<a target="_blank" href="{{'social.instagram' | setting('#')}}">
+							<i class="fa-brands fa-instagram"></i>
+						</a>
+						<a target="_blank" href="{{'social.linkedin' | setting('#')}}">
+							<i class="fa-brands fa-linkedin-in"></i>
+						</a>
+					</div>
+					<div class="year">
+						<a>SINCE
+							{{'general.year' | setting('#')}}
+						</a>
+					</div>
+				</div>
+			</div>
+		</header>
+	{% endif %}
+
+	<main class="body-wrapper">
+		{{ content | raw }}
+	</main>
+
+	<footer class="footer-wrapper container">
+		<div class="footer">
+			<p>
+				&copy  Palace Group LLC. 2023 All Rights Reserved
+			</p>
+		</div>
+	</footer>
+{% endblock %}

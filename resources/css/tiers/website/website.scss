@@ -1,0 +1,18 @@
+@import "@scss/startup";
+
+@layer layout {
+  @import "sections/main-layout";
+  @import "sections/content-real-estate";
+  @import "sections/sidemenu";
+  @import "sections/about";
+  @import "sections/vision";
+  @import "sections/project";
+  @import "sections/services";
+  @import "sections/division";
+  @import "sections/projectpage";
+  @import "sections/detail";
+  @import "sections/swiper";
+  @import "sections/home";
+  @import "sections/contact";
+  @import "sections/recruitment";
+}

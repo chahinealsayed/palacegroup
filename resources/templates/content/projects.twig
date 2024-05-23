@@ -1,0 +1,87 @@
+<section class="project-details container">
+	{% content get('id') %}
+	<div class="project-image">
+		<img src="{{ content.attrs.image.url }}" alt=""/>
+		<div class="overlay">
+			<div class="project-name">{{ content.local.title}}</div>
+			<div class="cat-title">{{ content.categories | map(cat => cat.local.title) | join(', ') }}</div>
+		</div>
+		<a class="carousel-control-prev" role="button" id="prev-button1">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		</a>
+		<a class="carousel-control-next" role="button" id="next-button1">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		</a>
+	</div>
+	<div class="swiper" id="mySwiper">
+		<div class="swiper-wrapper">
+			{% for image in content.gallery %}
+				<div class="swiper-slide">
+					<div class="img">
+						<img alt="" class="gallery-image clickable" src="{{ image.url }}">
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="info">
+		<h6 class="fw-bold text-center">PROJECT INFORMATION</h1>
+		<div class="wpb_wrapper">
+			<div class="project-detail-list text-light">
+				<div class="project-detail-item">
+					<span class="left">
+						Project name :</span>
+					<span class="right">{{content.attrs.name}}</span>
+				</div>
+				<div class="project-detail-item">
+					<span class="left">
+						Owner :</span>
+					<span class="right">{{content.attrs.owner}}</span>
+				</div>
+				<div class="project-detail-item">
+					<span class="left">
+						Location :</span>
+					<span class="right">{{content.attrs.location}}</span>
+				</div>
+				<div class="project-detail-item">
+					<span class="left">Built Up Area :</span>
+					<span class="right">{{content.attrs.area}}</span>
+				</div>
+				<div class="project-detail-item">
+					<span class="left">
+						Completion Period :</span>
+					<span class="right">{{content.attrs.period}}</span>
+				</div>
+				<div class="project-detail-item">
+					<span class="left">
+						Completion Year :</span>
+					<span class="right">{{content.attrs.year}}</span>
+				</div>
+				<div class="project-detail-item">
+					<span class="left">
+						Status :</span>
+					<span class="right">{{content.attrs.status}}</span>
+				</div>
+				<div class="project-detail-item">
+					<span class="left">
+						Project Type :</span>
+					<span class="right">
+						<div class="cat-title">{{content.attrs.type}}</div>
+					</span>
+				</div>
+				<div class="project-detail-item">
+					<span class="left">
+						Design by :</span>
+					<span class="right">
+						<div>{{content.attrs.design}}</div>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endcontent %}
+</section>
+<script>
+	window.carouselImages = [{% for image in content.gallery %}"{{ image.url }}",{% endfor %}];
+window.categoryLengths = {{ content.gallery|length }};
+</script>

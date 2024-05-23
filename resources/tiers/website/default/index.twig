@@ -1,0 +1,60 @@
+{{ "Home" | title }}
+{{ seo('home-' ~ language(), this.title, "", [], true) }}
+
+{% contents type="projects" limit='1000' %}
+{% set list = [] %}
+{% for item in contents %}
+	{% if item.attrs.show == "1" %}
+		{% set list = list|merge([item.attrs.homeposition]) %}
+	{% endif %}
+{% endfor %}
+{% for item in list %}{% endfor %}
+{% endcontents %}
+
+<div class="carousel-container container">
+	{% contents type="projects" limit='1000' %}
+	{% set count = -1 %}
+	<div class="carousel">
+		{% set items = contents|sort((a, b) => a.attrs.homeposition <=> b.attrs.homeposition) %}
+
+		{% for item in items %}
+			{% if item.attrs.show == "1" %}
+				{% set count = count + 1 %}
+				<div class="card-product {% if count == 0 %}active{% endif %}">
+					<div class="product-image" style="background:url('{{ item.attrs.homeimage.url}}') no-repeat center; width:100%; background-size:cover;height:72vh;"></div>
+					<div class="product-information">
+						<p class="product-title">{{item.local.title}}</p>
+						<p class="see-project">{{ "See project" | link('/default/content',{id:item.id ,type: 'products'}) }}</p>
+					</div>
+				</div>
+			{% endif %}
+		{% endfor %}
+		<a class="carousel-control-prev" role="button" id="prev-button">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		</a>
+		<a class="carousel-control-next" role="button" id="next-button">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		</a>
+	</div>
+	{% endcontents %}
+
+	<div class="aligns">
+		<div class="quote">
+			<div>
+				<span>
+					“To create something exceptional, your mindset
+				</span>
+			</div>
+			<div>
+				<span>
+					must be relentlessly focused on the smallest detail.”
+				</span>
+			</div>
+		</div>
+		<div class="carousel-dots">
+			{% for i in range(0, count) %}
+				<span class="carousel-dot" data-index="{{ i }}"></span>
+			{% endfor %}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,65 @@
+.recruitment {
+  .row {
+    .col-md-6 {
+      .card-info {
+        ol {
+          padding: 0;
+          list-style-position: inside;
+          .recruitment-info {
+            li {
+              font-weight: bold;
+              margin-bottom: 2rem;
+              font-size: 18px;
+              // &::marker {
+              //   padding-left: 100px;
+              //   margin-left: 100px;
+              // }
+            }
+            .excerpt {
+              font-family: "proxylight";
+              width: 80%;
+              line-height: 2.1;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .subtitle {
+    color: $primary;
+    line-height: 1.111;
+    font-size: 18px;
+    text-transform: uppercase;
+    // font-weight: 600;
+    position: relative;
+    letter-spacing: 0px;
+    padding-top: 20px;
+    &::before {
+      left: 0px;
+      position: absolute;
+      top: 0px;
+      content: "";
+      width: 4rem;
+      max-width: 100%;
+      height: 5px;
+      background: #135897;
+    }
+  }
+  .submit {
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    font-size: 15px;
+    background: #135897;
+    padding: 10px 20px;
+    font-weight: 600;
+    border: 0;
+    border-radius: 0;
+    transition: all 1s ease;
+
+    @media screen {
+      margin-bottom: 2rem;
+    }
+  }
+}

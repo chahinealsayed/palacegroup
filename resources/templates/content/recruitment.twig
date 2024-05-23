@@ -1,0 +1,14 @@
+<section class="project-details pt-5 container">
+	{% content get('id') %}
+	<div class="row">
+		<div class="col-md-6">
+			<p class="subtitle">{{ content.local.title}}</p>
+			<web-view blocks="{{ content.local.blocks | json }}"></web-view>
+		</div>
+		<div class="col-md-6">
+			<p class="subtitle">FILL THE BELOW FORM*</p>
+			{{'website/RecruitmentForm' | vue}}
+		</div>
+	</div>
+	{% endcontent %}
+</section>

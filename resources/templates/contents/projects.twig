@@ -1,0 +1,65 @@
+{% contents type="projects" sort="position" category=get('cid') %}
+<section class="project-section container">
+	{% if isMobile() or isTablet() %}
+		<div class="category">
+			{% categories type="projects" limit="6" parent=null %}
+			<select id="category-select" style="-webkit-appearance: none; appearance: none;">
+				<option class="category-link" data-cid="">
+					All Projects
+				</option>
+				{% for item in categories %}
+					<option class="category-link" data-cid="{{ item.id }}">
+						{{ item.local.title }}
+					</option>
+				{% endfor %}
+			</select>
+			{% endcategories %}
+		</div>
+	{% else %}
+		<div class="category">
+			{% categories type="projects"  limit="6" parent=null %}
+			<div>
+				{# {{ "ALL PROJECTS" | link('/default/contents',{type:'projects'}) }} #}
+				<a href="javascript:void(0)" class="category-link" data-cid="">ALL PROJECTS</a>
+			</div>
+			{% for item in categories %}
+				<div class="category-item">
+					<div>
+						<a href="javascript:void(0)" class="category-link" data-cid="{{ item.id }}">{{ item.local.title }}</a>
+						{# {{ item.local.title | link("../javascript:void(0)", { data-cid: item.id },{class: 'category-link'}) }} #}
+					</div>
+				</div>
+			{% endfor %}
+			{% endcategories %}
+		</div>
+	{% endif %}
+	{{'website/pagination' | vue}}
+	<div class="quote">
+		<div>
+			<span>
+				“To create something exceptional, your mindset
+			</span>
+		</div>
+		<div>
+			<span>
+				must be relentlessly focused on the smallest detail.”
+			</span>
+		</div>
+	</div>
+</section>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+const categoryLinks = document.querySelectorAll(".category-link");
+
+categoryLinks.forEach(function (link) {
+link.addEventListener("click", function (event) {
+event.preventDefault();
+categoryLinks.forEach(function (link) {
+link.classList.remove("active");
+});
+link.classList.add("active");
+});
+});
+});
+</script>
+{% endcontents %}
